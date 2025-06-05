@@ -14,8 +14,8 @@ int main(){
     printf("[2] - Subtraction\n");
     printf("[3] - Division\n");
     printf("[4] - Multipication\n");
-    printf("[5] - Lrger Number");
-    printf("[6] - Smaller Number");
+    printf("[5] - Lrger Number\n");
+    printf("[6] - Smaller Number\n");
 
     printf("Enter your choice:- ");
     scanf("%d",&Choice);
