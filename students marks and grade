@@ -1,0 +1,124 @@
+#include<stdio.h>
+#include<stdlib.h>
+char grade(int m);
+
+struct subject{
+    int std_id;
+    char name[50];
+    char sub1[50];
+    float marks1;
+    char g1;
+    char sub2[50];
+    float marks2;
+    char g2;
+    char sub3[50];
+    float marks3;
+    char g3;
+
+};
+int main(){
+    int A,B,i;
+    char name[50],s1[50],s2[50],s3[50];
+    struct subject std[1000];
+    FILE*f1;
+
+
+    f1=fopen("file01.txt","a+");
+
+    if(f1==NULL){
+        printf("Can\'t open the File.");
+        exit(1);
+    }
+
+    printf("[1]-input student data\n");
+    printf("[2]-Output student data\n\n");
+    printf("Enter your choice:- ");
+    scanf("%d",&A);
+    printf(".........................................\n\n");
+
+
+    switch(A){
+    case 1:
+        printf("How many student:- ");
+        scanf("%d",&B);
+
+        printf("Enter your First subject Name: ");
+        scanf("%s", s1);
+
+        printf("Enter your Second subject Name: ");
+        scanf("%s",s2);
+
+        printf("Enter your Third subject Name: ");
+        scanf("%s",s3);
+
+        for(i=0;i<B;i++){
+            printf(".........................................\n");
+
+            printf("Student ID: ");
+            scanf("%d", &std[i].std_id);
+
+            printf("Enter your name: ");
+            scanf("%s", std[i].name);
+
+
+            strcpy(std[i].sub1,s1);
+            printf("Enter your %s subject Marks:- ",s1);
+            scanf("%f",&std[i].marks1);
+            std[i].g1 = grade(std[i].marks1);
+
+
+            strcpy(std[i].sub2,s2);
+            printf("Enter your %s subject Marks:- ",s2);
+            scanf("%f",&std[i].marks2);
+            std[i].g2 = grade(std[i].marks1);
+
+            strcpy(std[i].sub3,s3);
+            printf("Enter your %s subject Marks:- ",s3);
+            scanf("%f",&std[i].marks3);
+            std[i].g3 = grade(std[i].marks1);
+
+        }
+    case 2:
+        printf(".........................................\n");
+        printf("How many student:- ");
+        scanf("%d",&B);
+
+
+        printf(".........................................\n");
+        printf("\n--- Student Details ---\n");
+
+        printf("\n--------------------------------------------------------------------------------------------------------------------\n");
+        printf("| %-5s | %-15s | %-10s | %-6s | %-5s | %-10s | %-6s | %-5s | %-10s | %-6s | %-5s |\n",
+                   "ID", "Name", "Subject1", "Marks", "Grade", "Subject2", "Marks", "Grade", "Subject3", "Marks", "Grade");
+        printf("----------------------------------------------------------------------------------------------------------------------\n");
+
+        for (i = 0; i < B; i++) {
+            printf("| %-5d | %-15s | %-10s | %-6.2f | %-5c | %-10s | %-6.2f | %-5c | %-10s | %-6.2f | %-5c |\n",
+                    std[i].std_id, std[i].name,
+                    std[i].sub1, std[i].marks1, std[i].g1,
+                    std[i].sub2, std[i].marks2, std[i].g2,
+                    std[i].sub3, std[i].marks3, std[i].g3);
+            }
+        }
+
+
+
+
+    return 0;
+}
+
+char grade(int m){
+    if (m > 100 || m < 0) {
+    return 'X';
+    } else if (m >= 75) {
+        return 'A';
+    } else if (m >= 65) {
+        return 'B';
+    } else if (m >= 55) {
+        return 'C';
+    } else if (m >= 35) {
+        return 'S';
+    } else {
+        return 'F';
+    }
+}
