@@ -20,15 +20,7 @@ int main(){
     int A,B,i;
     char name[50],s1[50],s2[50],s3[50];
     struct subject std[1000];
-    FILE*f1;
-
-
-    f1=fopen("file01.txt","a+");
-
-    if(f1==NULL){
-        printf("Can\'t open the File.");
-        exit(1);
-    }
+   
 
     printf("[1]-input student data\n");
     printf("[2]-Output student data\n\n");
